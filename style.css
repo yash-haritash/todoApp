@@ -136,10 +136,19 @@ button{
     display: flex;
     align-items: center;
     gap: 10px;
+    max-width: 70%
 }
 .task input {
     width: 20px;
     height: 20px;
+}
+
+.task p {
+    word-wrap: break-word; 
+    white-space: normal;   
+    overflow-wrap: break-word;
+    max-width: 100%;    
+
 }
 
 
@@ -209,4 +218,28 @@ input:checked + .slider {
 
 input:checked + .slider:before {
   transform: translateX(26px);
+}
+
+
+@media (max-width: 600px) {
+  .container {
+    margin-top: 60px;
+    padding: 0 15px;
+  }
+
+  .stats-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  form {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+    border-radius: 10px;
+    padding: 12px;
+  }
 }

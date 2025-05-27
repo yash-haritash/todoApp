@@ -133,7 +133,7 @@ const lightTheme = {
   '--secondaryBackground': '#f0f0f0',
   '--text': '#000000',
   '--purple': '#6c63ff',
-  '--teal': '#00d1b2'
+  '--teal': '#410a6b'
 };
 
 const darkTheme = {
