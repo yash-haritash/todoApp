@@ -123,3 +123,38 @@ function fire(particleRatio, opts) {
 });
 
 }
+
+
+
+// Dark Mode
+
+const lightTheme = {
+  '--background': '#ffffff',
+  '--secondaryBackground': '#f0f0f0',
+  '--text': '#000000',
+  '--purple': '#6c63ff',
+  '--teal': '#00d1b2'
+};
+
+const darkTheme = {
+  '--background': '#000430',
+  '--secondaryBackground': '#171c48',
+  '--text': '#ffffff',
+  '--purple': '#828dff',
+  '--teal': '#24feee'
+};
+
+function applyTheme(theme) {
+  const root = document.documentElement;
+  for (const variable in theme) {
+    root.style.setProperty(variable, theme[variable]);
+  }
+}
+
+let darkMode = true;
+
+document.getElementById('themeToggle').addEventListener('click', () => {
+  darkMode = !darkMode;
+  applyTheme(darkMode ? darkTheme : lightTheme);
+});
+
