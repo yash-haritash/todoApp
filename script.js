@@ -1,4 +1,4 @@
-let tasks = []
+let tasks = localStorage.getItem('tasks') ? JSON.parse(localStorage.getItem('tasks')) : [];
 
 const addButton = document.getElementById('add');
 
@@ -11,7 +11,6 @@ const addTask = ()=>{
         updateTaskList();
         taskInput.value = '';
     }
-    console.log(tasks);
 }
 
 const toggleCompleteTask = (index) => {
@@ -29,6 +28,18 @@ const editTask = (index) => {
     taskInput.value = tasks[index].text;
     tasks.splice(index, 1);
     updateTaskList();
+}
+
+const updateStats = ()=>{
+    const completedTasks = tasks.filter(task => task.completed).length;
+    const totalTasks = tasks.length;
+    const progress = completedTasks / totalTasks * 100;
+    const progressBar = document.querySelector('#progress');
+    progressBar.style.width = `${progress}%`;
+    const numbers = document.querySelector('#numbers');
+    numbers.innerHTML = `
+        <p>${completedTasks} / ${totalTasks}</p>
+    `;
 }
 
 const updateTaskList = () => {
@@ -53,9 +64,15 @@ const updateTaskList = () => {
         taskList.append(li);
     });
 
+    updateStats();
+    
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+
 }
 addButton.addEventListener('click', (e) => {
     e.preventDefault();
     addTask();
 }
 );
+
+updateTaskList();
