@@ -9,8 +9,26 @@ const addTask = ()=>{
     if (text) {
         tasks.push({text:text, completed: false});
         updateTaskList();
+        taskInput.value = '';
     }
     console.log(tasks);
+}
+
+const toggleCompleteTask = (index) => {
+    tasks[index].completed = !tasks[index].completed;
+    updateTaskList();
+}
+
+const deleteTask = (index) => {
+    tasks.splice(index, 1);
+    updateTaskList();
+}
+
+const editTask = (index) => {
+    const taskInput = document.getElementById('taskInput');
+    taskInput.value = tasks[index].text;
+    tasks.splice(index, 1);
+    updateTaskList();
 }
 
 const updateTaskList = () => {
@@ -31,7 +49,7 @@ const updateTaskList = () => {
                 </div>
             </div>
         `;
-        li.addEventListener('change', () => toggleComplete(index));
+        li.addEventListener('change', () => toggleCompleteTask(index));
         taskList.append(li);
     });
 
