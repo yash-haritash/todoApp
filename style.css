@@ -120,6 +120,11 @@ button{
     align-items: center;
 }
 
+.completed p {
+    text-decoration: line-through;
+    color: var(--teal);
+}
+
 .taskItem img {
     width:24px;
     height: 24px;
@@ -136,3 +141,4 @@ button{
     width: 20px;
     height: 20px;
 }
+
