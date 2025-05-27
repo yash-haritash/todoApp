@@ -100,3 +100,39 @@ button{
 
 
 }
+
+.task-list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+    width: 100%;
+    list-style: none;
+}
+
+.taskItem{
+    width: 100%;
+    display: flex;
+    background-color: var(--secondaryBackground);
+    padding: 10px;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.taskItem img {
+    width:24px;
+    height: 24px;
+    cursor: pointer;
+    margin: 0 10px;
+}
+
+.task{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.task input {
+    width: 20px;
+    height: 20px;
+}
