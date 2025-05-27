@@ -14,26 +14,27 @@ const addTask = ()=>{
 }
 
 const updateTaskList = () => {
-    const taskList = document.getElementById('task-list');
+    const taskList = document.querySelector('.task-list');
     taskList.innerHTML = '';
 
     tasks.forEach((task, index) => {
         const li = document.createElement('li');
         li.innerHTML = `
-            <div class="taskItem {${task.completed ? 'completed' : ''}">
+            <div class="taskItem ${task.completed ? 'completed' : ''}">
                 <div class="task">
                     <input type="checkbox" class="checkbox" ${task.completed ? "checked" : ""}/>
                     <p>${task.text}</p>
                 </div>
                 <div class="icons">
                     <img src="./img/edit.png" onclick="editTask(${index})">
-                    <img src="./img/save.png" onclick="saveTask(${index})">
+                    <img src="./img/bin.png" onclick="deleteTask(${index})">
                 </div>
             </div>
-        `
-        li.addEventListener('change', ()=> toggleComplete(index));
+        `;
+        li.addEventListener('change', () => toggleComplete(index));
         taskList.append(li);
     });
+
 }
 addButton.addEventListener('click', (e) => {
     e.preventDefault();
