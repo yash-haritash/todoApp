@@ -37,6 +37,11 @@ const editTask = (index) => {
 const updateStats = ()=>{
     const completedTasks = tasks.filter(task => task.completed).length;
     const totalTasks = tasks.length;
+    if (totalTasks === 0) {
+        document.querySelector('#progress').style.width = '0%';
+        document.querySelector('#numbers').innerHTML = '<p>0 / 0</p>';
+        return;
+    }
     const progress = completedTasks / totalTasks * 100;
     const progressBar = document.querySelector('#progress');
     progressBar.style.width = `${progress}%`;
@@ -78,6 +83,12 @@ addButton.addEventListener('click', (e) => {
     addTask();
 }
 );
+
+document.querySelector('#clear').addEventListener('click', (e) => {
+    e.preventDefault();
+    const taskInput = document.getElementById('taskInput');
+    taskInput.value = '';
+});
 
 updateTaskList();
 
